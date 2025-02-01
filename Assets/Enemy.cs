@@ -119,7 +119,7 @@ public class Enemy : MonoBehaviour
             Rigidbody boidRb = boid.GetComponent<Rigidbody>();
             if (diff < alignmentRadius * alignmentRadius)
             {
-                totalVelocity += boidRb.velocity;
+                totalVelocity += boidRb.linearVelocity;
                 alignmentCount++;
             }
 
@@ -135,10 +135,10 @@ public class Enemy : MonoBehaviour
         Vector3 averagePosition =
             cohesionCount > 0 ? totalPosition / cohesionCount : transform.position;
 
-        Vector3 averageVelocity = alignmentCount > 0 ? totalVelocity / alignmentCount : rb.velocity;
+        Vector3 averageVelocity = alignmentCount > 0 ? totalVelocity / alignmentCount : rb.linearVelocity;
 
         Vector3 cohesionVector = (averagePosition - transform.position) * cohesionScale;
-        Vector3 alignmentVector = (averageVelocity - rb.velocity) * alignmentScale;
+        Vector3 alignmentVector = (averageVelocity - rb.linearVelocity) * alignmentScale;
         Vector3 separationVector = totalSeparationForces * separationScale;
 
         Vector3 total = cohesionVector + alignmentVector + separationVector;
@@ -180,12 +180,12 @@ public class Enemy : MonoBehaviour
 
     void ClampXZVelocity()
     {
-        Vector2 xz = new Vector2(rb.velocity.x, rb.velocity.z);
+        Vector2 xz = new Vector2(rb.linearVelocity.x, rb.linearVelocity.z);
 
         if (xz.sqrMagnitude > maxSpeed * maxSpeed)
         {
             xz.Normalize();
-            rb.velocity = new Vector3(xz.x * 6, rb.velocity.y, xz.y * 6);
+            rb.linearVelocity = new Vector3(xz.x * 6, rb.linearVelocity.y, xz.y * 6);
         }
     }
 

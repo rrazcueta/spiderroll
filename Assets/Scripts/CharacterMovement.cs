@@ -98,10 +98,10 @@ public class CharacterMovement : MonoBehaviour
     float lowDrag;
 
     [SerializeField]
-    PhysicMaterial lowFriction;
+    PhysicsMaterial lowFriction;
 
     [SerializeField]
-    PhysicMaterial normalFriction;
+    PhysicsMaterial normalFriction;
 
     bool canDunk;
     public Transform gun;
@@ -213,7 +213,7 @@ public class CharacterMovement : MonoBehaviour
 
         float rbVelocityRatio =
             1
-            - Mathf.Min(1, (new Vector3(rb.velocity.x, 0, rb.velocity.z) / maximumSpeed).magnitude);
+            - Mathf.Min(1, (new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z) / maximumSpeed).magnitude);
         float horizontalStep = maxWalkSpeed * Time.fixedDeltaTime * rbVelocityRatio;
         Vector3 newPosition = rb.position + moveDirection * horizontalStep;
 
@@ -250,7 +250,7 @@ public class CharacterMovement : MonoBehaviour
 
         float rbVelocityRatio =
             1
-            - Mathf.Min(1, (new Vector3(rb.velocity.x, 0, rb.velocity.z) / maximumSpeed).magnitude);
+            - Mathf.Min(1, (new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z) / maximumSpeed).magnitude);
         float horizontalStep = walkSpeed * airControl * Time.fixedDeltaTime * rbVelocityRatio;
         Vector3 newPosition = rb.position + moveDirection * horizontalStep;
         rb.MovePosition(newPosition);
@@ -263,9 +263,9 @@ public class CharacterMovement : MonoBehaviour
         if (!canDunk)
             return;
 
-        float newY = Mathf.Min(-bigJumpSpeed, rb.velocity.y);
+        float newY = Mathf.Min(-bigJumpSpeed, rb.linearVelocity.y);
 
-        rb.velocity = new Vector3(rb.velocity.x, newY, rb.velocity.z);
+        rb.linearVelocity = new Vector3(rb.linearVelocity.x, newY, rb.linearVelocity.z);
         // rb.velocity = new Vector3(rb.velocity.x / 2, newY, rb.velocity.z / 2);
         // rb.velocity = new Vector3(0, newY, 0);
 
@@ -335,15 +335,15 @@ public class CharacterMovement : MonoBehaviour
         float dashStrength = dashPower * maximumSpeed * (ice ? 0.5f : 1);
 
         float xzVelocitySqrMagnitudeBefore = new Vector3(
-            rb.velocity.x,
+            rb.linearVelocity.x,
             0,
-            rb.velocity.z
+            rb.linearVelocity.z
         ).sqrMagnitude;
-        rb.velocity += new Vector3(dashDirV2.x, 0, dashDirV2.y) * dashStrength;
+        rb.linearVelocity += new Vector3(dashDirV2.x, 0, dashDirV2.y) * dashStrength;
         float xzVelocitySqrMagnitudeAfter = new Vector3(
-            rb.velocity.x,
+            rb.linearVelocity.x,
             0,
-            rb.velocity.z
+            rb.linearVelocity.z
         ).sqrMagnitude;
 
         if (
@@ -352,7 +352,7 @@ public class CharacterMovement : MonoBehaviour
         )
         {
             float speed = Mathf.Max(Mathf.Pow(xzVelocitySqrMagnitudeBefore, 0.5f), maximumSpeed);
-            rb.velocity = rb.velocity.normalized * speed;
+            rb.linearVelocity = rb.linearVelocity.normalized * speed;
         }
 
         spawner.Spawn("run", -Vector3.up * 0.707107f, Quaternion.identity);
@@ -369,22 +369,22 @@ public class CharacterMovement : MonoBehaviour
         if (Time.time - lastDashTime <= brakeDelay && isOnTheGround)
         {
             capCol.material = lowFriction;
-            rb.angularDrag = lowDrag;
+            rb.angularDamping = lowDrag;
             rb.useGravity = false;
             return;
         }
 
-        if (rb.velocity.y <= 0)
+        if (rb.linearVelocity.y <= 0)
         {
             capCol.material = normalFriction;
-            rb.angularDrag = highDrag;
+            rb.angularDamping = highDrag;
         }
 
         bool isMovingXZ =
             new Vector3(
-                rb.velocity.x - relativeMotion.x,
+                rb.linearVelocity.x - relativeMotion.x,
                 0,
-                rb.velocity.z - relativeMotion.z
+                rb.linearVelocity.z - relativeMotion.z
             ).sqrMagnitude > walkSpeed;
         if (isOnTheGround && isMovingXZ && Time.time - lastBreakEffect > breakEffectDelay && !ice)
         {
@@ -399,10 +399,10 @@ public class CharacterMovement : MonoBehaviour
             return;
         jumpedThisFrame = true;
 
-        rb.velocity = new Vector3(
-            rb.velocity.x * backflipDashMomentum,
+        rb.linearVelocity = new Vector3(
+            rb.linearVelocity.x * backflipDashMomentum,
             backflipSpeed,
-            rb.velocity.z * backflipDashMomentum
+            rb.linearVelocity.z * backflipDashMomentum
         );
 
         spawner.Spawn("backflip", -Vector3.up * 0.707107f, Quaternion.identity);
@@ -435,10 +435,10 @@ public class CharacterMovement : MonoBehaviour
             moveDirection.z * walkSpeed * (1 - airControl)
         );
         Vector3 vertical = Vector3.up * (jumpSpeed + relativeMotion.y);
-        rb.velocity += horizontal + vertical;
+        rb.linearVelocity += horizontal + vertical;
 
-        if (rb.velocity.y > jumpSpeed)
-            rb.velocity = new Vector3(rb.velocity.x, jumpSpeed, rb.velocity.z);
+        if (rb.linearVelocity.y > jumpSpeed)
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpSpeed, rb.linearVelocity.z);
 
         spawner.Spawn("jump", -Vector3.up * 0.707107f, Quaternion.identity);
     }
@@ -463,10 +463,10 @@ public class CharacterMovement : MonoBehaviour
             moveDirection.z * walkSpeed * (1 - airControl)
         );
         Vector3 vertical = Vector3.up * (bigJumpSpeed + relativeMotion.y);
-        rb.velocity += horizontal + vertical;
+        rb.linearVelocity += horizontal + vertical;
 
-        if (rb.velocity.y > bigJumpSpeed)
-            rb.velocity = new Vector3(rb.velocity.x, bigJumpSpeed, rb.velocity.z);
+        if (rb.linearVelocity.y > bigJumpSpeed)
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, bigJumpSpeed, rb.linearVelocity.z);
 
         canDunk = true;
 
@@ -476,7 +476,7 @@ public class CharacterMovement : MonoBehaviour
 
     public Vector2 GetHorizontalVelocity()
     {
-        return new Vector2(rb.velocity.x, rb.velocity.z);
+        return new Vector2(rb.linearVelocity.x, rb.linearVelocity.z);
     }
 
     void OnCollisionEnter()

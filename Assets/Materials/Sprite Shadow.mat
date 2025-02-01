@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 7
+  version: 9
 --- !u!114 &-2248759662883380816
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -273,6 +273,11 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 0.5660378, g: 0.3951465, b: 0.20024922, a: 1}
+    - _Color1: {r: 0.9339623, g: 0.736343, b: 0.4713866, a: 1}
+    - _Color2: {r: 1, g: 0, b: 0, a: 0}
+    - _Color3: {r: 0.1033286, g: 0.2479197, b: 0.8113208, a: 0}
+    - _Color4: {r: 0.5943396, g: 0.467012, b: 0.3392221, a: 0}
+    - _Color5: {r: 0.8490566, g: 0.8490566, b: 0.8490566, a: 1}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: 1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
@@ -283,6 +288,11 @@ Material:
     - _MainColor: {r: 0.7264151, g: 0.63602597, b: 0.5036935, a: 1}
     - _Multiply: {r: 0.6, g: 0.7, b: 0.9, a: 0}
     - _RampTweak: {r: 0.7, g: 0.3, b: 0.9, a: 0}
+    - _Shadow1: {r: 0.4431373, g: 0.2783104, b: 0.2078431, a: 1}
+    - _Shadow2: {r: 0.4245283, g: 0, b: 0.3309301, a: 0}
+    - _Shadow3: {r: 0.1670088, g: 0.08597365, b: 0.2641509, a: 0}
+    - _Shadow4: {r: 0.4339623, g: 0.2624874, b: 0.1862763, a: 0}
+    - _Shadow5: {r: 0.3301887, g: 0.2476415, b: 0.2476415, a: 0}
     - _ShadowColor: {r: 0.21322206, g: 0.15241191, b: 0.23584908, a: 1}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
     - _ThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
@@ -291,3 +301,4 @@ Material:
     - _UVMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMaskEmissive: {r: 1, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1

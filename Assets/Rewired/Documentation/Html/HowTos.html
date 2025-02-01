@@ -1,5 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="https://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/BasicTemplate.dwt" codeOutsideHTMLIsLocked="false" -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/BasicTemplate.dwt" codeOutsideHTMLIsLocked="false" -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <!-- InstanceBeginEditable name="doctitle" -->
@@ -70,7 +70,7 @@
               <li><a href="Deployment.html">Deployment</a></li>
               <li><a href="BestPractices.html">Best Practices</a></li>
               <li><a href="RewiredEditor.html">Rewired Editor</a></li>
-              <li><a href="https://guavaman.com/projects/rewired/docs/api-reference" target="_blank">API Reference</a></li>
+              <li><a href="http://guavaman.com/projects/rewired/docs/api-reference" target="_blank">API Reference</a></li>
             </ol>
             <strong>Concepts:</strong>
             <ul>
@@ -90,16 +90,19 @@
             <strong>Extras:</strong>
             <ul>
               <li><a href="ControlMapper.html" title="Control Mapper">Control Mapper</a></li>
+              <li><a href="Glyphs.html" title="Glyphs">Glyphs</a></li>
 	          <li><a href="TouchControls.html" title="Touch Controls">Touch Controls</a></li>
-              <li><a href="RewiredStandaloneInputModule.html">Rewired Standalone Input Module</a></li>
 	          <li><a href="UnityInputOverride.html" title="Unity Input Override">Unity Input Override</a></li>
             </ul>
             <strong>Misc:</strong>
             <ul>
+              <li><a href="RewiredStandaloneInputModule.html">Rewired Standalone Input Module</a></li>
 	          <li><a href="ComponentControls.html" title="Component Controls">Component Controls</a></li>
 	          <li><a href="PlayerControllers.html" title="Player Controllers">Player Controllers</a></li>
 	          <li><a href="InputMapper.html" title="Input Mapper">Input Mapper</a></li>
 	          <li><a href="UserDataStore.html" title="User Data Store">User Data Store</a></li>
+	          <li><a href="CustomPlatforms.html" title="User Data Store">Custom Platforms</a></li>
+              <li><a href="Localization.html" title="Localization">Localization</a></li>
             </ul>
             <strong>How To's:</strong>
             <ul>
@@ -122,27 +125,27 @@
             </ul>
             <strong>Unity Help:</strong>
             <ul>
-              <li><a href="https://docs.unity3d.com/Manual/" target="_blank">Unity Manual</a></li>
-              <li><a href="https://docs.unity3d.com/ScriptReference/" target="_blank">Unity Script Reference</a></li>
-              <li><a href="https://unity3d.com/learn/tutorials/modules" target="_blank">Unity Tutorials</a></li>
+              <li><a href="http://docs.unity3d.com/Manual/" target="_blank">Unity Manual</a></li>
+              <li><a href="http://docs.unity3d.com/ScriptReference/" target="_blank">Unity Script Reference</a></li>
+              <li><a href="http://unity3d.com/learn/tutorials/modules" target="_blank">Unity Tutorials</a></li>
             </ul>
             <strong>Links:</strong>
             <ul>
-              <li><a href="https://guavaman.com/projects/rewired">Rewired Website</a></li>
-              <li><a href="https://guavaman.com/projects/rewired/docs">Web Documentation</a></li>
+              <li><a href="http://guavaman.com/projects/rewired">Rewired Website</a></li>
+              <li><a href="http://guavaman.com/projects/rewired/docs">Web Documentation</a></li>
             </ul>
         </div>
         
     
     	<div class="main-body">
-	        <div class="logo"><a href="https://guavaman.com/projects/rewired" title="Rewired"><img src="files/images/rewired-logo.png" width="173" height="139" alt="Rewired" /></a></div>
+	        <div class="logo"><a href="http://guavaman.com/projects/rewired" title="Rewired"><img src="files/images/rewired-logo.png" width="173" height="139" alt="Rewired" /></a></div>
                      
-          <h1>
+            <h1>
             <!-- InstanceBeginEditable name="PageHeader" -->How To's
       <!-- InstanceEndEditable -->
             </h1>
             
-		  <!-- InstanceBeginEditable name="MainBody" -->
+			<!-- InstanceBeginEditable name="MainBody" -->
 
     <p>The following information was written under the assumption that you have already completely read and understood all documentation topics under Essentials and Concepts in the <a href="Documentation.html">Documentation</a>. If you have not done so, please do before continuing.</p>
     <p><strong>Topics:</strong></p>
@@ -842,11 +845,16 @@ for(int i = 0; i &lt; targetCount; i++) {
     <p>&nbsp;</p>
     <hr />
     <h3><a name="display-glyph-for-action" id="display-glyph-for-action"></a>Displaying a glyph for a Controller element mapped to an Action    </h3>
+    <p><strong>As of Rewired 1.1.56.0, displaying glyphs can be more easily handled by using the built-in glyph system. <a href="Glyphs.html">See this for more information</a>.</strong> Specifically, <a href="Glyphs.html#unity-ui-player-controller-element-glyph">this component can display the glyph(s) for controller elements mapped to an Action for a Player</a>.</p>
+    <p>The following information is considered outdated, but remains for reference.</p>
+    <p>&nbsp;</p>
+    <hr style="width: 50%; margin: 0 auto;"/>
+    <p>&nbsp;</p>
     <ul>
       <li><a href="#display-glyph-for-action-joystick">Joysticks</a></li>
       <li><a href="#display-glyph-for-action-keyboard">Keyboard</a></li>
       <li><a href="#display-glyph-for-action-mouse">Mouse</a></li>
-    </ul>
+</ul>
     <p><strong><a name="display-glyph-for-action-joystick" id="display-glyph-for-action-joystick"></a>Joysticks:</strong></p>
     <p>There are two different types of glyphs you can display for a Joystick:</p>
     <ol>
@@ -1295,7 +1303,12 @@ namespace Rewired.Demos {
 <p>&nbsp;</p>
 <hr />
     <h3><a name="display-glyph-for-active-elements" id="display-glyph-for-active-elements"></a>Displaying a glyph for the currently active Controller elements</h3>
-<p>Very similar to <a href="#display-glyph-for-action">the previous example</a>, this is a slightly modified process:</p>
+    <p><strong>As of Rewired 1.1.56.0, displaying glyphs can be more easily handled by using <a href="Glyphs.html">the built-in glyph system</a>. </strong>Specifically, <a href="Glyphs.html#unity-ui-controller-element-glyph">this component can display a glyph for a specific controller element.</a> You will still need to select the controller element(s) you want to display however, so the below information may be useful.</p>
+    <p>The following information is considered outdated, but remains for reference.</p>
+    <p>&nbsp;</p>
+    <hr style="width: 50%; margin: 0 auto;"/>
+    <p>&nbsp;</p>
+    <p>Very similar to <a href="#display-glyph-for-action">the previous example</a>, this is a slightly modified process:</p>
 <pre class="code">using UnityEngine;
 using System.Collections;
 
@@ -1379,8 +1392,10 @@ namespace Rewired.Demos {
       <a href="https://guavaman.com/projects/rewired/docs/api-reference/html/Overload_Rewired_ReInput_MappingHelper_GetJoystickMapInstance.htm">ReInput.mapping.GetJoystickMapInstance</a></p>
     <p>Controller Template Maps:<br />
       <a href="https://guavaman.com/projects/rewired/docs/api-reference/html/Overload_Rewired_ReInput_MappingHelper_GetControllerTemplateMapInstance.htm">ReInput.mapping.GetControllerTemplateMapInstance</a></p>
-    <p>Use the information from the returned maps to determine the mappings and display the information.</p>
-    <p>&nbsp;</p>
+    <p>If you need to display gylphs for saved user mappings:<br />
+      <a href="https://guavaman.com/projects/rewired/docs/api-reference/html/Overload_Rewired_ReInput_MappingHelper_GetJoystickMapInstanceSavedOrDefault.htm">ReInput.mapping.GetJoystickMapInstanceSavedOrDefault</a></p>
+<p>Use the information from the returned maps to determine the mappings and display the information.</p>
+<p>&nbsp;</p>
     <hr />
     <h3><a name="get-contributing-input-sources" id="get-contributing-input-sources"></a>Getting contributing input sources for an Action</h3>
 <p>You can get information about all the input sources currently contributing to the value of an <a href="Actions.html">Action</a> in a <a href="Players.html">Player</a>. There are several methods available to get this information:</p>
@@ -1636,6 +1651,7 @@ if(modifier &amp;&amp; primary) { <span class="comment">// modifier was held or 
 <p>&nbsp;</p>
 <hr />
 <h3><a name="converting-scripts" id="converting-scripts"></a>Converting scripts from UnityEngine.Input to Rewired</h3>
+<p><strong>IMPORTANT:</strong> This documentation applies to scripts that were written for the legacy UnityEngine.Input system. This does not apply to scripts written for Unity's new Input System.</p>
 <p><strong>Unity Input Override (the easy way):</strong></p>
 <p> Rewired includes the <a href="UnityInputOverride.html">Unity Input Override</a> script to make converting most scripts from Unity input to Rewired effortless and automatic, requiring no code changes to work. It even works with most assets downloaded from the Unity Asset Store. <a href="UnityInputOverride.html">See Unity Input Override for more information</a>.</p>
 <p><strong>Modifying script code to use Rewired instead of Unity input (the harder way):</strong></p>
@@ -1646,6 +1662,7 @@ if(modifier &amp;&amp; primary) { <span class="comment">// modifier was held or 
 </ul>
 <p>This will get the value of each <a href="Actions.html">Action</a> from Player 0 for all GetButton, GetButtonDown, GetButtonUp, GetAxis, and GetAxisRaw calls.</p>
 <p>You will also need to create the <a href="Actions.html">Actions</a> in the Rewired Input Manager that match the string names expected in the code. And of course you will have to create <a href="ControllerMaps.html">Keyboard, Mouse, Joystick, and/or Custom Controller Maps</a> and assign them to <a href="Players.html">Players</a> as is standard Rewired practice.</p>
+<p>Mouse Sensitivity: If the script you are using processes Mouse X/Y axis values such as a mouse-look script, be sure to <a href="RewiredEditor.html#InputBehaviors">set the Mouse XY Axis Sensitivity in the Input Behavior</a> assigned to the Actions to 0.1 instead of Rewired's default value of 1. Unity defaults to 0.1 sensitivity for mouse axes, so you should change this value to match if you want the scripts to behave the same way they would when using Unity input.</p>
 <p>If your code has Input.GetKey calls, if you want those to instead use Rewired <a href="Actions.html">Actions</a>, you will want to change these to &quot;Rewired.ReInput.players.GetPlayer(0).GetButton&quot; and replace the Unity KeyCode with the name or id of the <a href="Actions.html">Action</a> you want to use.</p>
 <p>You could also cache the <a href="Players.html">Player</a> object on Awake for the <a href="Players.html">Player</a> in question and use that variable in the find/replace operation, but the above example provides a quick method to convert most scripts that use UnityEngine.Input to Rewired.</p>
 <p>&nbsp;</p>
@@ -3117,8 +3134,8 @@ KERNEL==&quot;hidraw*&quot;, SUBSYSTEM==&quot;hidraw&quot;, KERNELS==&quot;*057E
         
     </div>
   <div class="footer clearfix">
-   	<p class="left">Copyright &copy;2014-2021 <a href="https://guavaman.com" title="Guavaman Enterprises">Guavaman Enterprises</a>. All rights reserved. No materials may be reproduced without permission.</p>
-  	<p class="right"><a href="https://guavaman.com/projects/rewired" title="Return to Rewired Website">Return to Rewired Website</a></p>
+   	<p class="left">Copyright &copy;2014-2021 <a href="http://guavaman.com" title="Guavaman Enterprises">Guavaman Enterprises</a>. All rights reserved. No materials may be reproduced without permission.</p>
+  	<p class="right"><a href="http://guavaman.com/projects/rewired" title="Return to Rewired Website">Return to Rewired Website</a></p>
   </div>
   <!-- end .content --></div>
   <!-- end .container --></div>

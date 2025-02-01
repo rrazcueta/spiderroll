@@ -503,7 +503,7 @@ public class SpriteAnimator : MonoBehaviour
             directedHeadAnimationSet = ConvertAngleToDirectedAnimationSet(headRotation);
         }
 
-        bool dirLeft = direction < 180;
+        bool dirLeft = direction > 180;
         billboarder.localScale = new Vector3(dirLeft ? 1 : -1, 1.414214f, 1);
 
         spriteIndex = Mathf.Clamp(spriteIndex, 0, framesPerDirection - 1);

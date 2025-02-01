@@ -36,7 +36,7 @@ public class Bullet : MonoBehaviour
         if (!setup)
             Awake();
 
-        rb.velocity = direction.normalized * speed;
+        rb.linearVelocity = direction.normalized * speed;
     }
 
     void OnTriggerEnter(Collider co)
